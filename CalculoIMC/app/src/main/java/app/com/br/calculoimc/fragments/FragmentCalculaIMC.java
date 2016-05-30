@@ -37,7 +37,7 @@ public class FragmentCalculaIMC extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable final Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragments_calcula_imc, container, false);
 
         txtPeso = (TextView) view.findViewById(R.id.edtPeso);
@@ -60,6 +60,7 @@ public class FragmentCalculaIMC extends Fragment {
                     Snackbar.make(view, "Campos Obrigatórios!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 }else{
                     calculaImc();
+                    Snackbar.make(view, imc.toString(), Snackbar.LENGTH_LONG).setAction("Action", null).show(); //TODO parei aqui
                 }
             }
         });
@@ -103,7 +104,8 @@ public class FragmentCalculaIMC extends Fragment {
         double peso = Double.parseDouble(txtPeso.getText().toString());
         double altura = Double.parseDouble(txtAltura.getText().toString());
         double resultado = (peso/Math.pow(altura,2));
-        txtResultado.setText(String.format("%.2f",resultado));
+        txtResultado.setText(String.format("%.2f", resultado));
+        montaImc(peso, altura, resultado);
     }
 
     public void limpaCampos(){
@@ -112,12 +114,11 @@ public class FragmentCalculaIMC extends Fragment {
         txtResultado.setText("");
     }
 
-    private Imc montaImc(){
+    private String montaImc(double peso, double altura, double resultado){
         Imc imc = new Imc();
-        imc.setPeso(Double.valueOf((String) txtPeso.getText()));
-        imc.setAltura(Double.valueOf((String) txtAltura.getText()));
-        imc.setPeso(Double.valueOf((String) txtPeso.getText()));
-        imc.setResultado(Double.valueOf((String) txtResultado.getText()));
+        imc.setPeso(peso);
+        imc.setAltura(altura);
+        imc.setResultado(resultado);
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         try {
             Date calculo = dateFormat.parse(dateFormat.toString());
@@ -125,7 +126,6 @@ public class FragmentCalculaIMC extends Fragment {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return imc;
+        return imc.toString();
     }
-
 }
