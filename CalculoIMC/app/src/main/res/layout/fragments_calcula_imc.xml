@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="110dp">
+    android:paddingTop="50dip" >
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/lytTxtPeso"
-        android:layout_width="match_parent"
+        android:layout_width="100dip"
         android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/txtPeso"
+            android:id="@+id/edtPeso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true"
@@ -20,10 +21,10 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/lytTxtAltura"
-        android:layout_width="match_parent"
+        android:layout_width="100dip"
         android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/txtAltura"
+            android:id="@+id/edtAltura"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true"
@@ -33,10 +34,10 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/lytTxtResultado"
-        android:layout_width="match_parent"
+        android:layout_width="100dip"
         android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/txtResultado"
+            android:id="@+id/edtResultado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true"
@@ -60,5 +61,13 @@
             android:text="@string/btn_limpar"
             android:layout_weight="1.0" />
     </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_input_add" />
 
 </LinearLayout>
