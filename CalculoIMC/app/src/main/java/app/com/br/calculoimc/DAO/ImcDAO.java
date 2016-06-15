@@ -1,9 +1,12 @@
 package app.com.br.calculoimc.DAO;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.annotation.NonNull;
 
+import app.com.br.calculoimc.entidade.Imc;
 import app.com.br.calculoimc.util.Constantes;
 
 /**
@@ -23,15 +26,29 @@ public class ImcDAO extends SQLiteOpenHelper {
         sql.append(" id_imc INTEGER PRIMARY KEY AUTOINCREMENT,");
         sql.append(" peso REAL NOT NULL,");
         sql.append(" altura REAL NOT NULL,");
-        sql.append(" resultado REAL NOT NULL,");
-        sql.append(" dt_calculo INTEGER NOT NULL)");
+        sql.append(" resultado REAL NOT NULL)");
 
         db.execSQL(sql.toString());
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        onCreate(db);
+    }
 
+    public void insereImc(Imc imc) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = getContentValues(imc);
+        db.insert("tb_imc", null, cv);
+    }
+
+    @NonNull
+    private ContentValues getContentValues(Imc imc) {
+        ContentValues cv = new ContentValues();
+        cv.put("peso", imc.getPeso());
+        cv.put("altura", imc.getAltura());
+        cv.put("resultado", imc.getResultado());
+        return cv;
     }
 
 //    public List<Imc> listarImc(){

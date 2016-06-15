@@ -2,7 +2,6 @@ package app.com.br.calculoimc.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
@@ -12,10 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import app.com.br.calculoimc.DAO.ImcDAO;
 import app.com.br.calculoimc.R;
 import app.com.br.calculoimc.entidade.Imc;
 
@@ -24,11 +20,10 @@ import app.com.br.calculoimc.entidade.Imc;
  */
 public class FragmentCalculaIMC extends Fragment {
 
-    private Button btnLimpar, btnCalcular;
+    private Button btnLimpar, btnCalcular, btnGravar;
     private TextView txtPeso, txtAltura, txtResultado;
     private TextInputLayout lytTxtPeso, lytTxtAltura;
-    private FloatingActionButton fabAdd;
-    private Imc imc;
+    Imc imc = new Imc();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,7 +55,6 @@ public class FragmentCalculaIMC extends Fragment {
                     Snackbar.make(view, "Campos Obrigatórios!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 }else{
                     calculaImc();
-                    Snackbar.make(view, imc.toString(), Snackbar.LENGTH_LONG).setAction("Action", null).show(); //TODO parei aqui
                 }
             }
         });
@@ -75,11 +69,14 @@ public class FragmentCalculaIMC extends Fragment {
         });
 
         //trata o floating button
-        fabAdd = (FloatingActionButton) view.findViewById(R.id.fabAdd);
-        fabAdd.setOnClickListener(new View.OnClickListener() {
+        btnGravar = (Button) view.findViewById(R.id.btnGravar);
+        btnGravar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Gravando dados...", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                ImcDAO dao = new ImcDAO(getActivity().getApplicationContext());
+                dao.insereImc(imc);
+                dao.close();
             }
         });
 
@@ -114,18 +111,10 @@ public class FragmentCalculaIMC extends Fragment {
         txtResultado.setText("");
     }
 
-    private String montaImc(double peso, double altura, double resultado){
-        Imc imc = new Imc();
+    private Imc montaImc(double peso, double altura, double resultado){
         imc.setPeso(peso);
         imc.setAltura(altura);
         imc.setResultado(resultado);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            Date calculo = dateFormat.parse(dateFormat.toString());
-            imc.setDtCalculo(calculo);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return imc.toString();
+        return imc;
     }
 }

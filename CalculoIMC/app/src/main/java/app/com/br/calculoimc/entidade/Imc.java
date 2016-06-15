@@ -1,7 +1,6 @@
 package app.com.br.calculoimc.entidade;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by Andre on 30/05/2016.
@@ -12,7 +11,6 @@ public class Imc implements Serializable {
     private double peso;
     private double altura;
     private double resultado;
-    private Date dtCalculo;
 
     public int getIdImc() {
         return idImc;
@@ -28,10 +26,6 @@ public class Imc implements Serializable {
 
     public double getResultado() {
         return resultado;
-    }
-
-    public Date getDtCalculo() {
-        return dtCalculo;
     }
 
     public void setIdImc(int idImc) {
@@ -50,10 +44,6 @@ public class Imc implements Serializable {
         this.resultado = resultado;
     }
 
-    public void setDtCalculo(Date dtCalculo) {
-        this.dtCalculo = dtCalculo;
-    }
-
     @Override
     public String toString() {
         return "Imc{" +
@@ -61,7 +51,6 @@ public class Imc implements Serializable {
                 ", peso=" + peso +
                 ", altura=" + altura +
                 ", resultado=" + resultado +
-                ", dtCalculo=" + dtCalculo +
                 '}';
     }
 }
