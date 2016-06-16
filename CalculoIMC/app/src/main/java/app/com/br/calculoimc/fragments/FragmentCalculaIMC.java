@@ -73,10 +73,20 @@ public class FragmentCalculaIMC extends Fragment {
         btnGravar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Gravando dados...", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                ImcDAO dao = new ImcDAO(getActivity().getApplicationContext());
-                dao.insereImc(imc);
-                dao.close();
+                if(!validaCampos()){
+                    return;
+                }else if(txtPeso.getText().toString().isEmpty() && txtAltura.getText().toString().isEmpty()){
+                    Snackbar.make(view, "Campos Obrigatórios!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                }else if(txtPeso.getText().toString().isEmpty() || txtAltura.getText().toString().isEmpty()){
+                    Snackbar.make(view, "Campos Obrigatórios!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                }else if(txtResultado.getText().toString().isEmpty()){
+                    Snackbar.make(view, "Para gravar precisa calcular!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                }else{
+                    ImcDAO dao = new ImcDAO(getActivity().getApplicationContext());
+                    dao.insereImc(imc);
+                    dao.close();
+                    Snackbar.make(view, "Gravando informações...", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                }
             }
         });
 
@@ -100,7 +110,7 @@ public class FragmentCalculaIMC extends Fragment {
     public void calculaImc(){
         double peso = Double.parseDouble(txtPeso.getText().toString());
         double altura = Double.parseDouble(txtAltura.getText().toString());
-        double resultado = (peso/Math.pow(altura,2));
+        double resultado = (peso/Math.pow(altura, 2));
         txtResultado.setText(String.format("%.2f", resultado));
         montaImc(peso, altura, resultado);
     }
@@ -117,4 +127,5 @@ public class FragmentCalculaIMC extends Fragment {
         imc.setResultado(resultado);
         return imc;
     }
+
 }

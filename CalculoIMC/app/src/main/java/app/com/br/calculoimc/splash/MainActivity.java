@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
+    private ViewPagerAdapter viewPageAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void configurarViewPager(ViewPager viewPager) {
-        ViewPagerAdapter viewPageAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPageAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPageAdapter.addFragment(new FragmentCalculaIMC(), "Calcula");
         viewPageAdapter.addFragment(new FragmentListaIMC(), "Lista IMC");
         viewPager.setAdapter(viewPageAdapter);
@@ -51,4 +52,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

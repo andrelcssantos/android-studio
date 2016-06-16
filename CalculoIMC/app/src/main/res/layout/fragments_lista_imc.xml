@@ -12,12 +12,12 @@
         android:id="@+id/lstImc"></ListView>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabAdd"
+        android:id="@+id/fabDel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_input_delete" />
+        android:src="@drawable/lixeira" />
 
 </RelativeLayout>
