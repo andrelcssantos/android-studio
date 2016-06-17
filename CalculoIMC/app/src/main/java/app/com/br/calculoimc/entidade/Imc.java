@@ -11,6 +11,15 @@ public class Imc implements Serializable {
     private double peso;
     private double altura;
     private double resultado;
+    private String tipo;
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
 
     public int getIdImc() {
         return idImc;
@@ -51,6 +60,7 @@ public class Imc implements Serializable {
                 ", peso=" + peso +
                 ", altura=" + altura +
                 ", resultado=" + resultado +
+                ", tipo=" + tipo +
                 '}';
     }
 }

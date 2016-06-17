@@ -14,6 +14,7 @@ import android.widget.TextView;
 import app.com.br.calculoimc.DAO.ImcDAO;
 import app.com.br.calculoimc.R;
 import app.com.br.calculoimc.entidade.Imc;
+import app.com.br.calculoimc.util.ClassificacaoImc;
 
 /**
  * Created by Andre on 27/05/2016.
@@ -21,9 +22,10 @@ import app.com.br.calculoimc.entidade.Imc;
 public class FragmentCalculaIMC extends Fragment {
 
     private Button btnLimpar, btnCalcular, btnGravar;
-    private TextView txtPeso, txtAltura, txtResultado;
+    private TextView txtPeso, txtAltura, txtResultado, txtTipo;
     private TextInputLayout lytTxtPeso, lytTxtAltura;
     Imc imc = new Imc();
+    private ImcDAO dao;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class FragmentCalculaIMC extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable final Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragments_calcula_imc, container, false);
 
+        txtTipo = (TextView) view.findViewById(R.id.txtTipo);
         txtPeso = (TextView) view.findViewById(R.id.edtPeso);
         txtAltura = (TextView) view.findViewById(R.id.edtAltura);
         txtResultado = (TextView) view.findViewById(R.id.edtResultado);
@@ -82,7 +85,7 @@ public class FragmentCalculaIMC extends Fragment {
                 }else if(txtResultado.getText().toString().isEmpty()){
                     Snackbar.make(view, "Para gravar precisa calcular!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 }else{
-                    ImcDAO dao = new ImcDAO(getActivity().getApplicationContext());
+                    dao = new ImcDAO(getActivity().getApplicationContext());
                     dao.insereImc(imc);
                     dao.close();
                     Snackbar.make(view, "Gravando informações...", Snackbar.LENGTH_LONG).setAction("Action", null).show();
@@ -108,24 +111,27 @@ public class FragmentCalculaIMC extends Fragment {
     }
 
     public void calculaImc(){
+        ClassificacaoImc classificacaoImc = new ClassificacaoImc();
         double peso = Double.parseDouble(txtPeso.getText().toString());
         double altura = Double.parseDouble(txtAltura.getText().toString());
         double resultado = (peso/Math.pow(altura, 2));
         txtResultado.setText(String.format("%.2f", resultado));
-        montaImc(peso, altura, resultado);
+        montaImc(peso, altura, resultado, classificacaoImc.classificaImc(resultado));
+        txtTipo.setText(imc.getTipo());
     }
 
     public void limpaCampos(){
         txtPeso.setText("");
         txtAltura.setText("");
         txtResultado.setText("");
+        txtTipo.setText("");
     }
 
-    private Imc montaImc(double peso, double altura, double resultado){
+    private Imc montaImc(double peso, double altura, double resultado, String tipo){
         imc.setPeso(peso);
         imc.setAltura(altura);
         imc.setResultado(resultado);
+        imc.setTipo(tipo);
         return imc;
     }
-
 }

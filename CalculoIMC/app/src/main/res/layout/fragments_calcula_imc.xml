@@ -43,6 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true"
+            android:textColor="#000"
             android:textAlignment="center"
             android:hint="@string/txt_resultado" />
     </android.support.design.widget.TextInputLayout>
@@ -73,10 +74,12 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/txtTipo"
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:text="AQUI VAI O TIPO DE IMC"/>
+        android:inputType="text"
+        style="@style/styleClaImc"/>
 
 </LinearLayout>

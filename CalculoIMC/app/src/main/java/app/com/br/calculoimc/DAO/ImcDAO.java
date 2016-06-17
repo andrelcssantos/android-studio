@@ -30,7 +30,8 @@ public class ImcDAO extends SQLiteOpenHelper {
         sql.append(" id_imc INTEGER PRIMARY KEY AUTOINCREMENT,");
         sql.append(" peso REAL NOT NULL,");
         sql.append(" altura REAL NOT NULL,");
-        sql.append(" resultado REAL NOT NULL)");
+        sql.append(" resultado REAL NOT NULL,");
+        sql.append(" tipo TEXT NOT NULL)");
 
         db.execSQL(sql.toString());
     }
@@ -52,6 +53,7 @@ public class ImcDAO extends SQLiteOpenHelper {
         cv.put("peso", imc.getPeso());
         cv.put("altura", imc.getAltura());
         cv.put("resultado", imc.getResultado());
+        cv.put("tipo", imc.getTipo());
         return cv;
     }
 
@@ -72,10 +74,7 @@ public class ImcDAO extends SQLiteOpenHelper {
         imc.setPeso(c.getDouble(c.getColumnIndex("peso")));
         imc.setAltura(c.getDouble(c.getColumnIndex("altura")));
         imc.setResultado(c.getDouble(c.getColumnIndex("resultado")));
-//        long time = c.getLong(c.getColumnIndex("dt_calculo"));
-//        Date dtCalculo = new Date();
-//        dtCalculo.setTime(time);
-//        imc.setDtCalculo(dtCalculo);
+        imc.setTipo(c.getString(c.getColumnIndex("tipo")));
     }
 
     public Imc consultaImcId(int id){

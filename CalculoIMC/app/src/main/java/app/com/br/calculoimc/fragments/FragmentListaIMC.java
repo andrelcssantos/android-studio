@@ -3,7 +3,6 @@ package app.com.br.calculoimc.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,7 +60,7 @@ public class FragmentListaIMC extends Fragment { //TODO LISTA NÃO ATUALIZA DEPO
                 setArrayAdapterImc();
                 adapter.notifyDataSetChanged(); //TODO não esta excluindo o item selecionado
                 dao.close();
-                Snackbar.make(view, "Excluíndo...", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+//                Snackbar.make(view, "Excluíndo...", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });
         return view;
@@ -71,7 +70,7 @@ public class FragmentListaIMC extends Fragment { //TODO LISTA NÃO ATUALIZA DEPO
         listaImc = dao.listarImc();
         List<String> valores = new ArrayList<String>();
         for(Imc i : listaImc){
-            valores.add("Peso: " + i.getPeso() + " Altura: " + i.getAltura() + " IMC: " + decimalFormat.format(i.getResultado()));
+            valores.add("Peso: " + i.getPeso() + " Altura: " + i.getAltura() + " IMC: " + decimalFormat.format(i.getResultado()) + "\nClassificação: " + i.getTipo());
         }
         adapter.clear();
         adapter.addAll(valores);
@@ -83,15 +82,13 @@ public class FragmentListaIMC extends Fragment { //TODO LISTA NÃO ATUALIZA DEPO
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Imc imc = dao.consultaImcId(listaImc.get(position).getIdImc());
 
-//            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-
             StringBuilder info = new StringBuilder();
             info.append("Peso: " + imc.getPeso());
             info.append("\nAltura: " + imc.getAltura());
             info.append("\nIMC: " + imc.getResultado());
-//            info.append("\nDt. Nascimento: " + dateFormat.format(pessoa.getDtNasc()));
+            info.append("\nClassificação " + imc.getTipo());
 
-            Snackbar.make(view, imc.getIdImc() + "Selecionado", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            //Snackbar.make(view, imc.getIdImc() + "Selecionado", Snackbar.LENGTH_LONG).setAction("Action", null).show();
         }
     };
 
