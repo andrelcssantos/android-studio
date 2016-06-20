@@ -8,7 +8,7 @@ import android.view.MenuItem;
 
 import app.com.br.calculoimc.R;
 import app.com.br.calculoimc.fragments.FragmentCalculaIMC;
-import app.com.br.calculoimc.fragments.FragmentListaIMC;
+import app.com.br.calculoimc.fragments.FragmentCalculaRCQ;
 import app.com.br.calculoimc.util.ViewPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,8 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void configurarViewPager(ViewPager viewPager) {
         viewPageAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPageAdapter.addFragment(new FragmentCalculaIMC(), "Calcula");
-        viewPageAdapter.addFragment(new FragmentListaIMC(), "Lista IMC");
+        viewPageAdapter.addFragment(new FragmentCalculaIMC(), getResources().getString(R.string.abaImc));
+        viewPageAdapter.addFragment(new FragmentCalculaRCQ(), getResources().getString(R.string.abaRcq));
+//        viewPageAdapter.addFragment(new FragmentListaIMC(), "Lista IMC");
         viewPager.setAdapter(viewPageAdapter);
     }
 

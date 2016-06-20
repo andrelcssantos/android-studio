@@ -1,10 +1,51 @@
 <resources>
     <string name="app_name">IMC</string>
     <string name="action_settings">Configuracões</string>
+
+    <!--Texts-->
     <string name="txt_peso">Peso</string>
     <string name="txt_altura">Altura</string>
     <string name="txt_resultado">Resultado</string>
+    <string name="txt_cintura">Cintura</string>
+    <string name="txt_quadril">Quadril</string>
+    <string name="txt_idade">Idade</string>
+
+    <!--Botões-->
     <string name="btn_calcular">Calcular</string>
     <string name="btn_limpar">Limpar</string>
     <string name="btn_gravar">Gravar</string>
+
+    <!--Radio Group-->
+    <string name="rdg_sexo">Sexo</string>
+    <string name="rgd_masc">Masculino</string>
+    <string name="rgd_femi">Feminino</string>
+
+    <!--Campos obrigatórios-->
+    <string name="camposObrig">Campos Obrigatórios</string>
+    <string name="campoPeso">Campo peso obrigatório</string>
+    <string name="campoAltura">Campo altura obrigatório</string>
+    <string name="campoCintura">Campo cintura obrigatório</string>
+    <string name="campoQuadril">Campo quadril obrigatório</string>
+    <string name="campoIdade">Campo idade obrigatório</string>
+
+    <!--Abas-->
+    <string name="abaImc">IMC</string>
+    <string name="abaRcq">RCQ</string>
+
+    <!--Classificação IMC-->
+    <string name="claMagreza1">Magreza Grau I</string>
+    <string name="claMagreza2">Magreza Grau II</string>
+    <string name="claMagreza3">Magreza Grau III</string>
+    <string name="claEutrofia">Eutrofia</string>
+    <string name="claSobrepeso">Sobrepeso</string>
+    <string name="claObesidade1">Obesidade Grau I</string>
+    <string name="claObesidade2">Obesidade Grau II</string>
+    <string name="claObesidade3">Obesidade Grau III</string>
+
+    <!--Classificação RCQ-->
+    <string name="claBaixo">Baixo</string>
+    <string name="claModerado">Moderado</string>
+    <string name="claAlto">Alto</string>
+    <string name="claMuitoAlto">Muito Alto</string>
+
 </resources>

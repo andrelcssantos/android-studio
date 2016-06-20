@@ -53,9 +53,9 @@ public class FragmentCalculaIMC extends Fragment {
                 if(!validaCampos()){
                     return;
                 }else if(txtPeso.getText().toString().isEmpty() && txtAltura.getText().toString().isEmpty()){
-                    Snackbar.make(view, "Campos Obrigatórios!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                    Snackbar.make(view, getResources().getString(R.string.camposObrig), Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 }else if(txtPeso.getText().toString().isEmpty() || txtAltura.getText().toString().isEmpty()){
-                    Snackbar.make(view, "Campos Obrigatórios!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                    Snackbar.make(view, getResources().getString(R.string.camposObrig), Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 }else{
                     calculaImc();
                 }
@@ -72,38 +72,36 @@ public class FragmentCalculaIMC extends Fragment {
         });
 
         //trata o floating button
-        btnGravar = (Button) view.findViewById(R.id.btnGravar);
-        btnGravar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!validaCampos()){
-                    return;
-                }else if(txtPeso.getText().toString().isEmpty() && txtAltura.getText().toString().isEmpty()){
-                    Snackbar.make(view, "Campos Obrigatórios!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                }else if(txtPeso.getText().toString().isEmpty() || txtAltura.getText().toString().isEmpty()){
-                    Snackbar.make(view, "Campos Obrigatórios!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                }else if(txtResultado.getText().toString().isEmpty()){
-                    Snackbar.make(view, "Para gravar precisa calcular!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                }else{
-                    dao = new ImcDAO(getActivity().getApplicationContext());
-                    dao.insereImc(imc);
-                    dao.close();
-                    Snackbar.make(view, "Gravando informações...", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                }
-            }
-        });
+//        btnGravar = (Button) view.findViewById(R.id.btnGravar);
+//        btnGravar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(!validaCampos()){
+//                    return;
+//                }else if(txtPeso.getText().toString().isEmpty() && txtAltura.getText().toString().isEmpty()){
+//                    Snackbar.make(view, "Campos Obrigatórios!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+//                }else if(txtResultado.getText().toString().isEmpty()){
+//                    Snackbar.make(view, "Para gravar precisa calcular!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+//                }else{
+//                    dao = new ImcDAO(getActivity().getApplicationContext());
+//                    dao.insereImc(imc);
+//                    dao.close();
+//                    Snackbar.make(view, "Gravando informações...", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+//                }
+//            }
+//        });
 
         return view;
     }
 
     private boolean validaCampos(){
         if(txtPeso.getText().toString().trim().isEmpty()){
-            lytTxtPeso.setError("Campo Peso Obrigatório!");
+            lytTxtPeso.setError(getResources().getString(R.string.campoPeso));
         }else{
             lytTxtPeso.setErrorEnabled(false);
         }
         if(txtAltura.getText().toString().trim().isEmpty()){
-            lytTxtAltura.setError("Campo Altura Obrigatório!");
+            lytTxtAltura.setError(getResources().getString(R.string.campoAltura));
         }else{
             lytTxtAltura.setErrorEnabled(false);
         }
