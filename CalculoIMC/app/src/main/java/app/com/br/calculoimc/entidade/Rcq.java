@@ -16,6 +16,15 @@ public class Rcq implements Serializable {
     private double resultado;
     private String tipo;
     private Sexo sexo;
+    private String frase;
+
+    public void setFrase(String frase) {
+        this.frase = frase;
+    }
+
+    public String getFrase() {
+        return frase;
+    }
 
     public int getIdRcq() {
         return idRcq;

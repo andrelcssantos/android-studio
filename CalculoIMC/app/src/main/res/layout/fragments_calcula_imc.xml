@@ -81,5 +81,12 @@
         android:textAlignment="center"
         android:inputType="text"
         style="@style/styleClaImc"/>
+    <TextView
+        android:id="@+id/txtFrase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:inputType="text"
+        style="@style/styleFraImc"/>
 
 </LinearLayout>

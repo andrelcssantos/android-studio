@@ -1,5 +1,6 @@
 package app.com.br.calculoimc.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -23,10 +24,10 @@ import app.com.br.calculoimc.util.Sexo;
 public class FragmentCalculaRCQ extends Fragment {
 
     private Button btnLimpar, btnCalcular;
-    private TextView txtCintura, txtQuadril, txtResultado, txtTipo, txtIdade;
+    private TextView txtCintura, txtQuadril, txtResultado, txtTipo, txtIdade, txtFrase;
     private TextInputLayout lytTxtCintura, lytTxtQuadril;
     private RadioGroup rdgSexo;
-    Rcq rcq = new Rcq();
+    private Rcq rcq = new Rcq();
     private Sexo sexo;
 
     @Override
@@ -39,6 +40,7 @@ public class FragmentCalculaRCQ extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable final Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragments_calcula_rcq, container, false);
 
+        txtFrase = (TextView) view.findViewById(R.id.txtFraseRcq);
         txtTipo = (TextView) view.findViewById(R.id.txtTipoRcq);
         txtCintura = (TextView) view.findViewById(R.id.edtCintura);
         txtQuadril = (TextView) view.findViewById(R.id.edtQuadril);
@@ -111,8 +113,11 @@ public class FragmentCalculaRCQ extends Fragment {
 
         txtResultado.setText(String.format("%.2f", resultado));
 
-        montaRcq(cintura, quadril, idade, resultado, classificacaoRcq.classificaRcq(resultado, idade, sexo));
-        txtTipo.setText(rcq.getTipo());
+        montaRcq(cintura, quadril, idade, resultado, classificacaoRcq.classificaRcq(resultado, idade, sexo), classificacaoRcq.getFrase());
+        txtTipo.setText(getResources().getString(Integer.parseInt(rcq.getTipo())));
+        txtTipo.setTextColor(Color.parseColor(classificacaoRcq.getCor()));
+        txtFrase.setText(getResources().getString(Integer.parseInt(classificacaoRcq.getFrase())));
+        txtFrase.setTextColor(Color.parseColor(classificacaoRcq.getCor()));
     }
 
     public void limpaCamposRCQ(){
@@ -121,9 +126,10 @@ public class FragmentCalculaRCQ extends Fragment {
         txtIdade.setText("");
         txtResultado.setText("");
         txtTipo.setText("");
+        txtFrase.setText("");
     }
 
-    private Rcq montaRcq(double cintura, double quadril, int idade, double resultado, String tipo){
+    private Rcq montaRcq(double cintura, double quadril, int idade, double resultado, String tipo, String frase){
         rcq.setCintura(cintura);
         rcq.setQuadril(quadril);
         rcq.setIdade(idade);
@@ -137,6 +143,7 @@ public class FragmentCalculaRCQ extends Fragment {
         }
         rcq.setResultado(resultado);
         rcq.setTipo(tipo);
+        rcq.setFrase(frase);
         return rcq;
     }
 

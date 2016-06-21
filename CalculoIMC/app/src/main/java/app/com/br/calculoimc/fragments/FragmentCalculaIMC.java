@@ -1,5 +1,6 @@
 package app.com.br.calculoimc.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -22,7 +23,7 @@ import app.com.br.calculoimc.util.ClassificacaoImc;
 public class FragmentCalculaIMC extends Fragment {
 
     private Button btnLimpar, btnCalcular, btnGravar;
-    private TextView txtPeso, txtAltura, txtResultado, txtTipo;
+    private TextView txtPeso, txtAltura, txtResultado, txtTipo, txtFrase;
     private TextInputLayout lytTxtPeso, lytTxtAltura;
     Imc imc = new Imc();
     private ImcDAO dao;
@@ -37,6 +38,7 @@ public class FragmentCalculaIMC extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable final Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragments_calcula_imc, container, false);
 
+        txtFrase = (TextView) view.findViewById(R.id.txtFrase);
         txtTipo = (TextView) view.findViewById(R.id.txtTipo);
         txtPeso = (TextView) view.findViewById(R.id.edtPeso);
         txtAltura = (TextView) view.findViewById(R.id.edtAltura);
@@ -114,8 +116,11 @@ public class FragmentCalculaIMC extends Fragment {
         double altura = Double.parseDouble(txtAltura.getText().toString());
         double resultado = (peso/Math.pow(altura, 2));
         txtResultado.setText(String.format("%.2f", resultado));
-        montaImc(peso, altura, resultado, classificacaoImc.classificaImc(resultado));
-        txtTipo.setText(imc.getTipo());
+        montaImc(peso, altura, resultado, classificacaoImc.classificaImc(resultado), classificacaoImc.getFrase());
+        txtTipo.setText(getResources().getString(Integer.parseInt(imc.getTipo())));
+        txtTipo.setTextColor(Color.parseColor(classificacaoImc.getCor()));
+        txtFrase.setText(getResources().getString(Integer.parseInt(classificacaoImc.getFrase())));
+        txtFrase.setTextColor(Color.parseColor(classificacaoImc.getCor()));
     }
 
     public void limpaCampos(){
@@ -123,13 +128,15 @@ public class FragmentCalculaIMC extends Fragment {
         txtAltura.setText("");
         txtResultado.setText("");
         txtTipo.setText("");
+        txtFrase.setText("");
     }
 
-    private Imc montaImc(double peso, double altura, double resultado, String tipo){
+    private Imc montaImc(double peso, double altura, double resultado, String tipo, String frase){
         imc.setPeso(peso);
         imc.setAltura(altura);
         imc.setResultado(resultado);
         imc.setTipo(tipo);
+        imc.setFrase(frase);
         return imc;
     }
 }

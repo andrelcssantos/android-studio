@@ -12,6 +12,15 @@ public class Imc implements Serializable {
     private double altura;
     private double resultado;
     private String tipo;
+    private String frase;
+
+    public void setFrase(String frase) {
+        this.frase = frase;
+    }
+
+    public String getFrase() {
+        return frase;
+    }
 
     public void setTipo(String tipo) {
         this.tipo = tipo;

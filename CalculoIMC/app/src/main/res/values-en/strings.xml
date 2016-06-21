@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">IMC</string>
+    <string name="app_name">BMI</string>
     <string name="action_settings">Settings</string>
 
     <!--Texts-->
@@ -21,15 +21,33 @@
     <string name="rgd_femi">Female</string>
 
     <!--Campos obrigatórios-->
-    <string name="camposObrig">Required fields</string>
-    <string name="campoPeso">Required field weight</string>
-    <string name="campoAltura">Required field height</string>
-    <string name="campoCintura">Required field waist</string>
-    <string name="campoQuadril">Required field hip</string>
-    <string name="campoIdade">Required field age</string>
+    <string name="camposObrig">Fields cannot be blank</string>
+    <string name="campoPeso">Weight value required</string>
+    <string name="campoAltura">Height value required</string>
+    <string name="campoCintura">Waist value required</string>
+    <string name="campoQuadril">Hip value required</string>
+    <string name="campoIdade">Age value required</string>
 
     <!--Abas-->
     <string name="abaImc">BMI</string>
     <string name="abaRcq">WHR</string>
+
+    <!--Classificação IMC-->
+    <string name="claMagreza1">Underweight</string>
+    <string name="claMagreza2">Severely Underweight</string>
+    <string name="claMagreza3">Very Severely Underweight</string>
+    <string name="claEutrofia">Normal Healthy Weight</string>
+    <string name="claSobrepeso">Overweight</string>
+    <string name="claObesidade1">Moderately Obese (Class I)</string>
+    <string name="claObesidade2">Severely Obese (Class II)</string>
+    <string name="claObesidade3">Very Severely Obese (Class III)</string>
+
+    <!--Classificação RCQ-->
+    <string name="claBaixo">Low</string>
+    <string name="claModerado">Moderate</string>
+    <string name="claAlto">High</string>
+    <string name="claMuitoAlto">Very High</string>
+    <string name="claValorInvalido">Invalid value</string>
+    <string name="claIdadeInvalido">Age must be in 29 e 59</string>
 
 </resources>
