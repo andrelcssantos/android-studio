@@ -1,5 +1,6 @@
 package app.com.br.calculoimc.fragments;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,8 +8,10 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -61,6 +64,19 @@ public class FragmentCalculaIMC extends Fragment {
                 }else{
                     calculaImc();
                 }
+            }
+        });
+        //esconde o teclado quando clica no botão
+        btnCalcular = (Button) view.findViewById(R.id.btnCalcular);
+        btnCalcular.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                v.onTouchEvent(event);
+                InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+                return true;
             }
         });
 
@@ -119,7 +135,7 @@ public class FragmentCalculaIMC extends Fragment {
         montaImc(peso, altura, resultado, classificacaoImc.classificaImc(resultado), classificacaoImc.getFrase());
         txtTipo.setText(getResources().getString(Integer.parseInt(imc.getTipo())));
         txtTipo.setTextColor(Color.parseColor(classificacaoImc.getCor()));
-        txtFrase.setText(getResources().getString(Integer.parseInt(classificacaoImc.getFrase())));
+//        txtFrase.setText(getResources().getString(Integer.parseInt(classificacaoImc.getFrase())));
         txtFrase.setTextColor(Color.parseColor(classificacaoImc.getCor()));
     }
 
