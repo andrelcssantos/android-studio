@@ -19,23 +19,6 @@
             android:hint="@string/txt_peso" />
     </android.support.design.widget.TextInputLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_kg"
-        android:layout_toRightOf="@id/lytTxtPeso"
-        android:layout_marginTop="30dp"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_mt"
-        android:layout_toRightOf="@+id/lytTxtAltura"
-        android:layout_below="@id/lytTxtPeso"
-        android:layout_marginTop="30dp"
-        android:textStyle="bold"/>
-
     <android.support.design.widget.TextInputLayout
         android:layout_below="@id/lytTxtPeso"
         android:id="@+id/lytTxtAltura"
@@ -63,7 +46,7 @@
 
     <LinearLayout
         android:layout_below="@id/lytTxtAltura"
-        android:id="@+id/btn_botoesIMC"
+        android:id="@id/btn_botoes"
         android:layout_marginTop="16dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -83,7 +66,7 @@
     </LinearLayout>
 
     <TextView
-        android:layout_below="@id/btn_botoesIMC"
+        android:layout_below="@id/btn_botoes"
         android:id="@+id/txtTipo"
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"

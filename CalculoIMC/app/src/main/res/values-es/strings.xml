@@ -9,6 +9,9 @@
     <string name="txt_cintura">Cintura</string>
     <string name="txt_quadril">Cadera</string>
     <string name="txt_idade">Edad</string>
+    <string name="txt_kg">kg</string>
+    <string name="txt_mt">metros</string>
+    <string name="txt_cm">cm</string>
 
     <!--Botões-->
     <string name="btn_calcular">Calcular</string>

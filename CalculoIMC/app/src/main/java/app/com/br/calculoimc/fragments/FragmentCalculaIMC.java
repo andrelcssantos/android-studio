@@ -45,7 +45,7 @@ public class FragmentCalculaIMC extends Fragment {
         txtTipo = (TextView) view.findViewById(R.id.txtTipo);
         txtPeso = (TextView) view.findViewById(R.id.edtPeso);
         txtAltura = (TextView) view.findViewById(R.id.edtAltura);
-        txtResultado = (TextView) view.findViewById(R.id.edtResultado);
+        txtResultado = (TextView) view.findViewById(R.id.TxtResultadoRcq);
         lytTxtPeso = (TextInputLayout) view.findViewById(R.id.lytTxtPeso);
         lytTxtAltura = (TextInputLayout) view.findViewById(R.id.lytTxtAltura);
         txtResultado.setEnabled(false);
@@ -89,26 +89,6 @@ public class FragmentCalculaIMC extends Fragment {
             }
         });
 
-        //trata o floating button
-//        btnGravar = (Button) view.findViewById(R.id.btnGravar);
-//        btnGravar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(!validaCampos()){
-//                    return;
-//                }else if(txtPeso.getText().toString().isEmpty() && txtAltura.getText().toString().isEmpty()){
-//                    Snackbar.make(view, "Campos Obrigatórios!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-//                }else if(txtResultado.getText().toString().isEmpty()){
-//                    Snackbar.make(view, "Para gravar precisa calcular!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-//                }else{
-//                    dao = new ImcDAO(getActivity().getApplicationContext());
-//                    dao.insereImc(imc);
-//                    dao.close();
-//                    Snackbar.make(view, "Gravando informações...", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-//                }
-//            }
-//        });
-
         return view;
     }
 
@@ -135,6 +115,7 @@ public class FragmentCalculaIMC extends Fragment {
         montaImc(peso, altura, resultado, classificacaoImc.classificaImc(resultado), classificacaoImc.getFrase());
         txtTipo.setText(getResources().getString(Integer.parseInt(imc.getTipo())));
         txtTipo.setTextColor(Color.parseColor(classificacaoImc.getCor()));
+        txtResultado.setTextColor(Color.parseColor(classificacaoImc.getCor()));
 //        txtFrase.setText(getResources().getString(Integer.parseInt(classificacaoImc.getFrase())));
         txtFrase.setTextColor(Color.parseColor(classificacaoImc.getCor()));
     }

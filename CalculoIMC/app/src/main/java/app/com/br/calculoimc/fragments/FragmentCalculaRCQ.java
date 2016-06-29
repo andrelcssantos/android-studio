@@ -48,7 +48,7 @@ public class FragmentCalculaRCQ extends Fragment {
         txtCintura = (TextView) view.findViewById(R.id.edtCintura);
         txtQuadril = (TextView) view.findViewById(R.id.edtQuadril);
         txtIdade = (TextView) view.findViewById(R.id.edtIdade);
-        txtResultado = (TextView) view.findViewById(R.id.edtResultadoRcq);
+        txtResultado = (TextView) view.findViewById(R.id.TxtResultadoRcq);
         lytTxtCintura = (TextInputLayout) view.findViewById(R.id.lytTxtCintura);
         lytTxtQuadril = (TextInputLayout) view.findViewById(R.id.lytTxtQuadril);
         rdgSexo = (RadioGroup) view.findViewById(R.id.rdgSexo);
@@ -133,6 +133,7 @@ public class FragmentCalculaRCQ extends Fragment {
         montaRcq(cintura, quadril, idade, resultado, classificacaoRcq.classificaRcq(resultado, idade, sexo), classificacaoRcq.getFrase());
         txtTipo.setText(getResources().getString(Integer.parseInt(rcq.getTipo())));
         txtTipo.setTextColor(Color.parseColor(classificacaoRcq.getCor()));
+        txtResultado.setTextColor(Color.parseColor(classificacaoRcq.getCor()));
 //        txtFrase.setText(getResources().getString(Integer.parseInt(classificacaoRcq.getFrase()))); //TODO terminar as frases de todas as classificações
         txtFrase.setTextColor(Color.parseColor(classificacaoRcq.getCor()));
     }
