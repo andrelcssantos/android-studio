@@ -52,22 +52,22 @@
         android:layout_marginTop="30dp"
         android:textStyle="bold"/>
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_below="@+id/lytTxtQuadril"
-        android:id="@+id/lytTxtIdade"
-        android:layout_width="100dip"
-        android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/edtIdade"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:inputType="number"
-            android:hint="@string/txt_idade"/>
-    </android.support.design.widget.TextInputLayout>
+    <!--<android.support.design.widget.TextInputLayout-->
+        <!--android:layout_below="@+id/lytTxtQuadril"-->
+        <!--android:id="@+id/lytTxtIdade"-->
+        <!--android:layout_width="100dip"-->
+        <!--android:layout_height="wrap_content">-->
+        <!--<EditText-->
+            <!--android:id="@+id/edtIdade"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:singleLine="true"-->
+            <!--android:inputType="number"-->
+            <!--android:hint="@string/txt_idade"/>-->
+    <!--</android.support.design.widget.TextInputLayout>-->
 
     <TextView
-        android:layout_below="@id/lytTxtIdade"
+        android:layout_below="@id/lytTxtQuadril"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"

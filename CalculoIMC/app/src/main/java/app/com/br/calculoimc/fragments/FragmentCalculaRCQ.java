@@ -47,7 +47,7 @@ public class FragmentCalculaRCQ extends Fragment {
         txtTipo = (TextView) view.findViewById(R.id.txtTipoRcq);
         txtCintura = (TextView) view.findViewById(R.id.edtCintura);
         txtQuadril = (TextView) view.findViewById(R.id.edtQuadril);
-        txtIdade = (TextView) view.findViewById(R.id.edtIdade);
+//        txtIdade = (TextView) view.findViewById(R.id.edtIdade);
         txtResultado = (TextView) view.findViewById(R.id.TxtResultadoRcq);
         lytTxtCintura = (TextInputLayout) view.findViewById(R.id.lytTxtCintura);
         lytTxtQuadril = (TextInputLayout) view.findViewById(R.id.lytTxtQuadril);
@@ -106,18 +106,17 @@ public class FragmentCalculaRCQ extends Fragment {
         }else{
             lytTxtQuadril.setErrorEnabled(false);
         }
-        if(txtIdade.getText().toString().trim().isEmpty()){
-            txtIdade.setError(getResources().getString(R.string.campoIdade));
-        }
+//        if(txtIdade.getText().toString().trim().isEmpty()){
+//            txtIdade.setError(getResources().getString(R.string.campoIdade));
+//        }
         return true;
     }
 
-    public void calculaRcq(){
+    private void calculaRcq(){
         ClassificacaoRcq classificacaoRcq = new ClassificacaoRcq();
         double cintura = Double.parseDouble(txtCintura.getText().toString());
         double quadril = Double.parseDouble(txtQuadril.getText().toString());
-        int idade = Integer.parseInt(txtIdade.getText().toString());
-        double resultado = (cintura/quadril);
+//        int idade = Integer.parseInt(txtIdade.getText().toString());
 
         switch (rdgSexo.getCheckedRadioButtonId()){
             case R.id.rdbFemi:
@@ -128,29 +127,40 @@ public class FragmentCalculaRCQ extends Fragment {
                 break;
         }
 
-        txtResultado.setText(String.format("%.2f", resultado));
+        txtResultado.setText(String.format("%.2f", trataValores(cintura, quadril)));
 
-        montaRcq(cintura, quadril, idade, resultado, classificacaoRcq.classificaRcq(resultado, idade, sexo), classificacaoRcq.getFrase());
+        montaRcq(cintura, quadril, trataValores(cintura, quadril), classificacaoRcq.classificaRcq(trataValores(cintura, quadril), sexo), classificacaoRcq.getFrase());
         txtTipo.setText(getResources().getString(Integer.parseInt(rcq.getTipo())));
         txtTipo.setTextColor(Color.parseColor(classificacaoRcq.getCor()));
         txtResultado.setTextColor(Color.parseColor(classificacaoRcq.getCor()));
-//        txtFrase.setText(getResources().getString(Integer.parseInt(classificacaoRcq.getFrase()))); //TODO terminar as frases de todas as classificações
+        txtFrase.setText(getResources().getString(Integer.parseInt(classificacaoRcq.getFrase())));
         txtFrase.setTextColor(Color.parseColor(classificacaoRcq.getCor()));
     }
 
-    public void limpaCamposRCQ(){
+    private double trataValores(double cintura, double quadril) {
+        double resultado = 0;
+        if (quadril > 0 && cintura > 0) {
+            resultado = (cintura / quadril);
+        } else{
+            resultado = resultado;
+        }
+        return resultado;
+    }
+
+    private void limpaCamposRCQ(){
         txtCintura.setText("");
         txtQuadril.setText("");
-        txtIdade.setText("");
+//        txtIdade.setText("");
         txtResultado.setText("");
         txtTipo.setText("");
         txtFrase.setText("");
+        rdgSexo.check(R.id.rdbFemi);
     }
 
-    private Rcq montaRcq(double cintura, double quadril, int idade, double resultado, String tipo, String frase){
+    private Rcq montaRcq(double cintura, double quadril, double resultado, String tipo, String frase){
         rcq.setCintura(cintura);
         rcq.setQuadril(quadril);
-        rcq.setIdade(idade);
+//        rcq.setIdade(idade);
         switch (rdgSexo.getCheckedRadioButtonId()){
             case R.id.rdbFemi:
                 rcq.setSexo(Sexo.FEMININO);

@@ -13,6 +13,15 @@ public class Imc implements Serializable {
     private double resultado;
     private String tipo;
     private String frase;
+    private double pesoIdeal;
+
+    public void setPesoIdeal(double pesoIdeal) {
+        this.pesoIdeal = pesoIdeal;
+    }
+
+    public double getPesoIdeal() {
+        return pesoIdeal;
+    }
 
     public void setFrase(String frase) {
         this.frase = frase;

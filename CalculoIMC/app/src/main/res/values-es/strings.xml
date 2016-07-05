@@ -50,7 +50,7 @@
     <string name="claModerado">Moderado</string>
     <string name="claAlto">Alto</string>
     <string name="claMuitoAlto">Muy alto</string>
-    <string name="claValorInvalido">Valor invalido</string>
+    <string name="claValorInvalido">Valores no son válidos</string>
     <string name="claIdadeInvalido">Edad debe estar entre 29 y 59 años</string>
 
 </resources>
