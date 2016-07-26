@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">IMC</string>
+    <string name="app_name">IMC/ICC</string>
     <string name="action_settings">Configuraciones</string>
 
     <!--Texts-->
@@ -33,7 +33,7 @@
 
     <!--Abas-->
     <string name="abaImc">IMC</string>
-    <string name="abaRcq">RCC</string>
+    <string name="abaRcq">ICC</string>
 
     <!--Classificação IMC-->
     <string name="claMagreza1">Bajo el peso</string>
@@ -52,5 +52,20 @@
     <string name="claMuitoAlto">Muy alto</string>
     <string name="claValorInvalido">Valores no son válidos</string>
     <string name="claIdadeInvalido">Edad debe estar entre 29 y 59 años</string>
+
+    <!--Frases ICQ-->
+    <string name="fraMuitoBaixo">Usted está muy abajo de su peso ideal</string>
+    <string name="fraPoucoBaixo">Usted está abajo del peso ideal</string>
+    <string name="fraBaixo">Usted está un poco abajo del peso ideal</string>
+    <string name="fraIdeal">¡Felicitaciones, usted está en su peso normal!</string>
+    <string name="fraSobre">Usted está arriba de su peso ideal (sobrepeso)</string>
+    <string name="fraMuiAlto">Usted está muy arriba de su peso ideal</string>
+    <string name="pesoIdeal">Su peso ideal es de alrededor de: </string>
+
+    <!--Frases RCQ-->
+    <string name="RcqBaixo">Usted tiene bajo riesgo para el síndrome metabólico</string>
+    <string name="RcqModerado">Usted tiene riesgo moderado para el síndrome metabólico</string>
+    <string name="RcqAlto">Usted tiene alto riesgo para el síndrome metabólico</string>
+    <string name="valoresInv">Insertar valores válidos</string>
 
 </resources>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BMI</string>
+    <string name="app_name">BMI/WHR</string>
     <string name="action_settings">Settings</string>
 
     <!--Texts-->
@@ -52,5 +52,20 @@
     <string name="claMuitoAlto">Very High</string>
     <string name="claValorInvalido">Invalids values</string>
     <string name="claIdadeInvalido">Age must be in 29 e 59</string>
+
+    <!--Frases ICQ-->
+    <string name="fraMuitoBaixo">You are underweight</string>
+    <string name="fraPoucoBaixo">You are moderately thin</string>
+    <string name="fraBaixo">You are mild thin</string>
+    <string name="fraIdeal">Congratulations, you are at a healthy weight</string>
+    <string name="fraSobre">You are overweight</string>
+    <string name="fraMuiAlto">You are obese</string>
+    <string name="pesoIdeal">Your ideal weight is around: </string>
+
+    <!--Frases RCQ-->
+    <string name="RcqBaixo">You have low risk for metabolic syndrome</string>
+    <string name="RcqModerado">You have moderate risk for metabolic syndrome</string>
+    <string name="RcqAlto">You have high risk for metabolic syndrome</string>
+    <string name="valoresInv">Insert valid values</string>
 
 </resources>

@@ -22,7 +22,7 @@ import app.com.br.calculoimc.entidade.Imc;
 /**
  * Created by Andre on 27/05/2016.
  */
-public class FragmentListaIMC extends Fragment { //TODO LISTA NÃO ATUALIZA DEPOIS DE INSERIR UM NOVO ELEMENTO
+public class FragmentListaIMC extends Fragment {
 
     private ListView lstImc;
     private List<Imc> listaImc;
@@ -58,7 +58,7 @@ public class FragmentListaIMC extends Fragment { //TODO LISTA NÃO ATUALIZA DEPO
                 int id = listaImc.get(posicaoSelecionada).getIdImc();
                 dao.removeImc(id);
                 setArrayAdapterImc();
-                adapter.notifyDataSetChanged(); //TODO não esta excluindo o item selecionado
+                adapter.notifyDataSetChanged();
                 dao.close();
 //                Snackbar.make(view, "Excluíndo...", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }

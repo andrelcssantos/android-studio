@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">IMC</string>
+    <string name="app_name">IMC/RCQ</string>
     <string name="action_settings">Configuracões</string>
 
     <!--Texts-->
@@ -57,7 +57,7 @@
     <string name="fraMuitoBaixo">Você está muito abaixo de seu peso ideal</string>
     <string name="fraPoucoBaixo">Você está abaixo de seu peso ideal</string>
     <string name="fraBaixo">Você está um pouco abaixo de seu peso ideal</string>
-    <string name="fraIdeal">Parabéns, você está em seu peso ideal</string>
+    <string name="fraIdeal">Parabéns, você está em seu peso adequado</string>
     <string name="fraSobre">Você está acima de seu peso ideal</string>
     <string name="fraMuiAlto">Você está muito acima de seu peso ideal</string>
     <string name="pesoIdeal">Seu peso ideal é de aproximadamente: </string>
